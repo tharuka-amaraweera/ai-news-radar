@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-25",
+  "generatedAt": "2026-11-25T11:30:00Z",
+  "items": [
+    {
+      "headline": "Anthropic launches Claude Ship, which can review, fix and approve pull requests",
+      "summary": "Anthropic announced Claude Ship, a set of three agents that review pull requests, fix them, and approve the routine ones. It targets the review backlog that builds up when coding agents write most of the code, so expect teams to start debating which changes still need a human approver.",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests",
+      "source": "The Verge AI",
+      "tag": "Dev tools"
+    },
+    {
+      "headline": "MCP turns two: Claude gets Skills over MCP and better support for long-running tasks",
+      "summary": "Anthropic marked the second anniversary of the Model Context Protocol by adding support for skills and long-running tasks. Claude Code v2.1.332 shipped the same week with skills from MCP servers in beta, so a server can now deliver packaged instructions as well as tools.",
+      "url": "https://thenewstack.io/mcp-skills-tasks-claude/",
+      "source": "The New Stack",
+      "tag": "Dev tools"
+    },
+    {
+      "headline": "Z.ai releases GLM-5.4, its first model built on a looped transformer",
+      "summary": "GLM-5.4 is now available from the Chinese lab Z.ai, which pitches it at general coding. In a standard transformer each layer runs once per forward pass; a loop transformer runs a group of weights more than once. Worth watching as an architecture change rather than another scale-up.",
+      "url": "https://simonwillison.net/2026/Nov/23/glm-54/",
+      "source": "Simon Willison",
+      "tag": "Models"
+    },
+    {
+      "headline": "Amazon says attackers' AI agents found and exploited a zero-day with little human input",
+      "summary": "Ars Technica reports Amazon's finding that AI agents discovered and exploited a previously unknown vulnerability largely on their own, using the Cairn AI framework that defenders also rely on. It is a concrete sign that agent tooling now cuts both ways in security work.",
+      "url": "https://arstechnica.com/security/2026/11/amazon-says-hackers-ai-agents-found-and-exploited-0-day-with-little-human-input/",
+      "source": "Ars Technica",
+      "tag": "Industry"
+    },
+    {
+      "headline": "Confluent spent three months porting Kafka's Java client to Rust with AI agents, then started over",
+      "summary": "Confluent used AI coding agents for nearly three months to translate Apache Kafka's Java client into Rust, and the engineers ended up discarding the result and restarting. A useful case study in where agent-driven rewrites of large codebases go wrong.",
+      "url": "https://thenewstack.io/confluent-kafka-rust-agents/",
+      "source": "The New Stack",
+      "tag": "Software"
+    },
+    {
+      "headline": "Netflix describes how it reworked its development process for AI coding agents",
+      "summary": "At QCon San Francisco, Netflix's Commerce team explained how it retrofitted its software lifecycle so agents and engineers ship together. The team wrote 45 architecture decision records for people and agents, and added a review agent that posts only verified blockers.",
+      "url": "https://www.infoq.com/news/2026/11/netflix-sdlc-ai-coding-agents/",
+      "source": "InfoQ AI",
+      "tag": "Software"
+    },
+    {
+      "headline": "Google engineer: treat production AI agents as an insider-risk problem",
+      "summary": "At QCon San Francisco, Google's Amanda Walker framed AI agents as insider risk operating at machine speed. She described identity, credential and containment patterns for running them safely in production, which is a practical checklist for anyone giving an agent real access.",
+      "url": "https://www.infoq.com/news/2026/11/qcon-ai-agent-security/",
+      "source": "InfoQ AI",
+      "tag": "Software"
+    },
+    {
+      "headline": "Paper: 'lazy' agents commit to answers before they have enough evidence",
+      "summary": "A paper trending on Hugging Face finds that agents on long tasks often commit to an answer while their own stated belief still names several possibilities. The authors propose reinforcement learning with verifiable beliefs to teach agents to act on what they believe.",
+      "url": "https://huggingface.co/papers/2611.32884",
+      "source": "Hugging Face Papers",
+      "tag": "Research"
+    },
+    {
+      "headline": "DeepMind open-sources the Lean 4 framework that verifies its agents' quantum algorithms",
+      "summary": "Google DeepMind used teams of agents plus formal verification to improve quantum algorithms for fusion and chemistry, and has open-sourced the Lean 4 framework used to check the results. The New Stack reports a 290-fold cut in quantum computing costs.",
+      "url": "https://thenewstack.io/deepmind-lean-quantum-verification/",
+      "source": "The New Stack",
+      "tag": "Research"
+    },
+    {
+      "headline": "Simon Willison: three LLM inflection points in twelve months",
+      "summary": "Simon Willison published the write-up and video of his AI Engineer Code Summit keynote. It is built around three significant jumps in the abilities of LLMs and coding agents over the past year, and is a good single read for catching up on how fast the field moved.",
+      "url": "https://simonwillison.net/2026/Nov/24/llm-inflection-points/",
+      "source": "Simon Willison",
+      "tag": "Software"
+    }
+  ]
+}

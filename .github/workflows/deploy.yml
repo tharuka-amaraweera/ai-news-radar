@@ -1,0 +1,93 @@
+name: Deploy site and notify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      notify:
+        description: Send the WhatsApp message after deploying
+        type: boolean
+        default: false
+
+# Needed by the official Pages actions.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; let a running deployment finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v5
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      # A bad daily run stops here, so the live site keeps yesterday's good data.
+      - name: Check the news data
+        run: npm run validate
+
+      - name: Build the site
+        run: npm run build
+
+      - name: Upload the built site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # Runs only for the daily agent's commits ("news: YYYY-MM-DD") or a manual run
+  # with "notify" ticked, so ordinary code pushes do not message you.
+  notify:
+    needs: deploy
+    if: >-
+      (github.event_name == 'push' && startsWith(github.event.head_commit.message, 'news:'))
+      || inputs.notify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v5
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Send the WhatsApp message
+        run: node scripts/notify.mjs
+        env:
+          CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
